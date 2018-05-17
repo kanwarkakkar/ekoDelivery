@@ -30,5 +30,6 @@ function findCostOfDelivery(deliveryRoute){
     return costOfDelivery;
 }
 
-//Case 1 
-console.log(findCostOfDelivery('E-A-C-F'));
+export{
+    findCostOfDelivery
+}

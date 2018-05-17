@@ -36,6 +36,8 @@ function findNumberPossibleRoutes(fromTown,toTown,maxStop,sameRoute){
 // Max stop
 // Route
 // Twice route or not
-console.log(findNumberPossibleRoutes('E','E',10,false));
+export{
+    findNumberPossibleRoutes
+}
 //Case 2
 
