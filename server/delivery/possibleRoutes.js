@@ -1,43 +1,50 @@
 import _ from 'lodash'
-import {routesGraph} from './createGraph'
+import {createGraph} from './createGraph'
 
-function findNumberPossibleRoutes(fromTown,toTown,maxStop,sameRoute){
-    fromTown = fromTown.toUpperCase();
-    toTown = toTown.toUpperCase();
-    let routes = routesGraph[fromTown];
-    let possibleRoutes =0;
-    let path ='';
-    function findRoutes(path,currentTown,toTown,maxStop,currentStops){
-        path = path + currentTown;
-        if(currentTown == toTown){
-            possibleRoutes++;
-            console.log(path);
-            return;
+class PossibleRoutes{
+        
+        constructor(inputRoutes){
+            this.routesGraph='';
+            this.routesGraph = createGraph(inputRoutes)
+            this.possibleRoutes=0;
         }
-        if(currentStops >= maxStop){
-            return;
+
+        findRoutes(path,currentTown,toTown,maxStop,currentStops){
+            path = path + currentTown;
+            if(currentTown == toTown){
+                this.possibleRoutes++;
+                return;
+            }
+            if(currentStops >= maxStop){
+                return;
+            }
+            currentStops++;
+            let towns = this.routesGraph[currentTown];
+            for(let curr of towns ){
+                currentTown = Object.keys(curr)[0];
+                this.findRoutes(path,currentTown,toTown,maxStop,currentStops);
+            }
         }
-        currentStops++;
-        let towns = routesGraph[currentTown];
-        for(let curr of towns ){
-            currentTown = Object.keys(curr)[0];
-            findRoutes(path,currentTown,toTown,maxStop,currentStops);
+
+        findNumberPossibleRoutes(fromTown,toTown,maxStop,sameRoute){
+            this.possibleRoutes=0;
+            fromTown = fromTown.toUpperCase();
+            toTown = toTown.toUpperCase();
+            let routes = this.routesGraph[fromTown];
+            let path ='';
+            for(let curr of routes ){
+                let currentTown = Object.keys(curr)[0];
+                this.findRoutes(path,currentTown,toTown,maxStop,1);
+            }
+            return this.possibleRoutes;
         }
-    }
-    for(let curr of routes ){
-        let currentTown = Object.keys(curr)[0];
-        findRoutes(path,currentTown,toTown,maxStop,1);
-    }
-    return possibleRoutes;
 }
 
 
 
-// Max stop
-// Route
-// Twice route or not
+
 export{
-    findNumberPossibleRoutes
+    PossibleRoutes
 }
-//Case 2
+
 
