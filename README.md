@@ -86,7 +86,7 @@ http://localhost:8080/eko
      });
      ```
   
- # Case 2 : Number of possible deliveries
+ ### Case 2 : Number of possible deliveries
 ----
 
 * **URL**
@@ -132,7 +132,7 @@ http://localhost:8080/eko
     });
   ```
   
-# Case 3 : Cheapest delivery between two towns
+### Case 3 : Cheapest delivery between two towns
 ----
 
 * **URL**
