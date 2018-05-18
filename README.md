@@ -131,7 +131,54 @@ http://localhost:8080/eko
     console.log(body);
     });
   ```
+### Case 2 (BONUS) :  Number of possible routes if using same route again
+----
+
+* **URL**
+
+  /eko/possibleRoutes
+
+* **Method:**
+
+  `POST`
   
+
+* **Body**
+`{
+"inputGraph":"AB1, AC4, AD10, BE3, CD4, CF2, DE1, EB3, EA2, FD1",
+"fromTown":"E",
+"toTown":"E",
+sameRoute: true,
+maxDeliveryCost: 20
+}`
+
+ * **Optional:**
+`inputGraph` - will take default sample graph
+ 
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{
+    "possibleRoutes": 29
+}`
+
+
+* **Sample Call:**
+
+  ```javascript
+    var request = require("request");
+    var options = { method: 'POST',
+    url: 'http://localhost:8080/eko/possibleRoutes',
+    body: 
+    { inputGraph: 'AB1, AC4, AD10, BE3, CD4, CF2, DE1, EB3, EA2, FD1',fromTown: 'E',toTown: 'E',sameRoute: true,maxDeliveryCost: 20},
+    json: true };
+    request(options, function (error, response, body) {
+    if (error) throw new Error(error);
+    console.log(body);
+    });
+  ```
+
 ### Case 3 : Cheapest delivery between two towns
 ----
 
