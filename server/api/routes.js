@@ -37,13 +37,13 @@ router.post('/eko/eKonomicalDelivery',(req,res,next)=>{
     let fromTown = req.body.fromTown;
     let toTown = req.body.toTown
     let maxStops = req.body.maxStops?req.body.maxStops:Number.MAX_SAFE_INTEGER
-    
+   
     if (!fromTown || !toTown)
         res.status(500).send('Please enter valid input e.g fromTown:"E", toTown:"D" in json format')
     else {
         
         let cD = new EKonomicalDelivery(inputGraph);
-        let result = cD.getCheapestDeliveryRoute(fromTown,toTown,maxStops,false);
+        let result = cD.getCheapestDeliveryRoute(fromTown,toTown,maxStops);
         res.status(200).send({cheapestDelivery:result});
     }
 })
@@ -58,20 +58,24 @@ router.post('/eko/eKonomicalDelivery',(req,res,next)=>{
         */
        // To find the number of possible routes
 router.post('/eko/possibleRoutes',(req,res,next)=>{
+    
     let inputGraph = req.body.inputGraph || 'AB1, AC4, AD10, BE3, CD4, CF2, DE1, EB3, EA2, FD1';
     let fromTown = req.body.fromTown;
     let toTown = req.body.toTown
     let maxStops = req.body.maxStops?req.body.maxStops:Number.MAX_SAFE_INTEGER
-    
+    let sameRoute = req.body.sameRoute || false
+    let maxDeliveryCost = req.body.maxDeliveryCost || Number.MAX_SAFE_INTEGER
     if (!fromTown || !toTown)
         res.status(500).send('Please enter valid input e.g fromTown:"E", toTown:"D" and maxStops:4 in json format')
     else {
         
         let pR = new PossibleRoutes(inputGraph);
         const possibleRoutesObject = {
-            fromTown: fromTown,
-            toTown: toTown,
-            maxStops: maxStops,
+            fromTown,
+            toTown,
+            maxStops,
+            sameRoute,
+            maxDeliveryCost
         }
         
         let result = pR.findNumberPossibleRoutes(possibleRoutesObject);
