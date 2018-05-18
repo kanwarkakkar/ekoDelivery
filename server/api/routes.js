@@ -3,6 +3,10 @@ import express from 'express'
 import {PossibleRoutes,EKonomicalDelivery,DeliveryCost} from '../index'
 let router = express.Router();
 
+router.get('/eko', (req, res, next) => {
+
+    res.send('API is UP and Running :)')
+})
 router.post('/eko/deliveryCost',(req,res,next)=>{
    
     let inputGraph = req.body.inputGraph || 'AB1, AC4, AD10, BE3, CD4, CF2, DE1, EB3, EA2, FD1';
