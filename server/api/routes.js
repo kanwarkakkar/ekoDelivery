@@ -47,7 +47,13 @@ router.post('/eko/possibleRoutes',(req,res,next)=>{
     else {
         
         let pR = new PossibleRoutes(inputGraph);
-        let result = pR.findNumberPossibleRoutes(fromTown,toTown,maxStops,false);
+        const possibleRoutesObject = {
+            fromTown: fromTown,
+            toTown: toTown,
+            maxStops: maxStops,
+        }
+        
+        let result = pR.findNumberPossibleRoutes(possibleRoutesObject);
         res.status(200).send({possibleRoutes:result});
     }
 })

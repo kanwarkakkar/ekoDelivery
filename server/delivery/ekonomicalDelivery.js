@@ -7,7 +7,8 @@ class EKonomicalDelivery extends PossibleRoutes{
     }
 
     getCheapestDeliveryRoute(fromTown,toTown,maxStops){
-        return super.getDeliveryRoute(fromTown,toTown,maxStops,true);
+
+        return super.getDeliveryRoute({fromTown,toTown,maxStops});
     }
 
 }
