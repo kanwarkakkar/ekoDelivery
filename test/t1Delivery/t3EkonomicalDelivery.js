@@ -1,7 +1,7 @@
 const expect = require('chai').expect
 import { EKonomicalDelivery } from '../../server/delivery/ekonomicalDelivery'
 
-describe('Case 3 : Cheapest Delivery Cost from one Town to another Town', () => {
+describe('Case 3 : Cheapest Delivery route between two towns', () => {
     it('should return 9 as cheapeat delivery cost from E to D',  () => {
 
         let inputGraph = 'AB1, AC4, AD10, BE3, CD4, CF2, DE1, EB3, EA2, FD1'

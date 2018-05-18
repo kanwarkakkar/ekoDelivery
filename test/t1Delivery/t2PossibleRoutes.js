@@ -1,7 +1,7 @@
 const expect = require('chai').expect
 import { PossibleRoutes } from '../../server/delivery/possibleRoutes'
 
-describe('Case 2 : findNumberPossibleRoutes from one Town to another Town', () => {
+describe('Case 2 : Calculate number of possible delivery route from one Town to another Town', () => {
     it('should return 4 as possible routes from E to D with max stops 4',  () => {
 
 

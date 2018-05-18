@@ -1,7 +1,7 @@
 let expect = require('chai').expect
 import { DeliveryCost } from '../../server/delivery/deliveryCost'
 
-describe('Case 1 : findCostOfDelivery in a specific route', () => {
+describe('Case 1 : Calculate delivery cost of the given delivery route', () => {
     it('should return 8 as cost of delivery for route E-A-C-F', function () {
 
 
