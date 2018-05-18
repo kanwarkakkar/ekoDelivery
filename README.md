@@ -18,7 +18,7 @@ Project is tested on node v8.6.0
 
 Install the dependencies and devDependencies 
 ```sh
-$ cd ekDelivery
+$ cd ekoDelivery
 $ npm install 
 ```
 
