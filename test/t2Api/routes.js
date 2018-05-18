@@ -83,6 +83,26 @@ describe('ekoDelivery', () => {
                 });
         });
     });
+   
+    describe('/POST possibleRoutes', () => {
+        it('should return 29 as possible routes from E to E - covering same route twice - with 20 as max delivery cost - with no max stops limit', (done) => {
+            const possibleRoutesObject = {
+                fromTown: 'E',
+                toTown: 'E',
+                sameRoute: true,
+                maxDeliveryCost: 20,
+            }
+            chai.request(server)
+                .post('/eko/possibleRoutes')
+                .send(possibleRoutesObject)
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    expect(res.body.possibleRoutes).to.be.equal(29)
+                    done();
+                });
+        });
+    });
 
     describe('/POST cheapestDelivery', () => {
         it('should return 9 as cheapest delivery from E to D with no max stops limit', (done) => {

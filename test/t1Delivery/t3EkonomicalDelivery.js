@@ -30,7 +30,7 @@ describe('Case 3 : Cheapest Delivery route between two towns', () => {
         expect(expectedCost).to.be.equal(actualCost);
     });
     
-    it('should return 0 as cheapeat delivery cost from E to X',  () => {
+    it('should return 0 as cheapest delivery cost from E to X',  () => {
 
         let inputGraph = 'AB1, AC4, AD10, BE3, CD4, CF2, DE1, EB3, EA2, FD1'
         const fromTown = 'E'
