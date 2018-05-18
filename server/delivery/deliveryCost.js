@@ -3,10 +3,12 @@ import {createGraph} from './createGraph'
 
 class DeliveryCost {
 
+    // Creating graph from input routes
     constructor(inputRoutes) {
         this.routesGraph = createGraph(inputRoutes)
     }
 
+    // find cost of delivery of the given route
     findCostOfDelivery(deliveryRoute) {
 
         let deliveryTowns = _.map(deliveryRoute.split('-'), _.trim);

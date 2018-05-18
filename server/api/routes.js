@@ -3,10 +3,17 @@ import express from 'express'
 import {PossibleRoutes,EKonomicalDelivery,DeliveryCost} from '../index'
 let router = express.Router();
 
+// Testing API
 router.get('/eko', (req, res, next) => {
 
     res.send('API is UP and Running :)')
 })
+
+/*
+        @parms  {route}                 - delivery route
+                {inputGraph}            - input routes between towns
+        */
+       // API to calculate delivery cost in a route
 router.post('/eko/deliveryCost',(req,res,next)=>{
    
     let inputGraph = req.body.inputGraph || 'AB1, AC4, AD10, BE3, CD4, CF2, DE1, EB3, EA2, FD1';
@@ -19,7 +26,12 @@ router.post('/eko/deliveryCost',(req,res,next)=>{
         res.status(200).send({cost:result});
     }
 })
-
+        /*
+        @parms  {fromTown}              - starting town
+                {toTown}                - Destination town
+                {inputGraph}            - input routes between towns
+        */
+       //API to find cheapest delivery in the route
 router.post('/eko/eKonomicalDelivery',(req,res,next)=>{
     let inputGraph = req.body.inputGraph || 'AB1, AC4, AD10, BE3, CD4, CF2, DE1, EB3, EA2, FD1';
     let fromTown = req.body.fromTown;
@@ -36,6 +48,15 @@ router.post('/eko/eKonomicalDelivery',(req,res,next)=>{
     }
 })
 
+ /*
+        @parms  {fromTown}              - starting town
+                {toTown}                - Destination town
+                {sameRoute}             - Variable set if same route is allowed twice
+                {maxDeliveryCost}       - Upper limit of delivery cost
+                {maxStops}              - Upper limit of stops in the route
+                {inputGraph}            - input routes between towns
+        */
+       // To find the number of possible routes
 router.post('/eko/possibleRoutes',(req,res,next)=>{
     let inputGraph = req.body.inputGraph || 'AB1, AC4, AD10, BE3, CD4, CF2, DE1, EB3, EA2, FD1';
     let fromTown = req.body.fromTown;

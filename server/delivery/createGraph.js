@@ -2,7 +2,7 @@
 import _ from 'lodash'
 
 
-
+// Creating graph of input routes
 function createGraph(inputRoutesStr){
     let routesGraph = {}
     const inputRoutes = _.map(inputRoutesStr.split(','),_.trim);
