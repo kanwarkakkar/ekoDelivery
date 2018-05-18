@@ -10,8 +10,8 @@ class PossibleRoutes{
             this.cheapestDelivery = Number.MAX_SAFE_INTEGER;
         }
 
-        getDeliveryRoute(fromTown,toTown,maxStops,sameRoute){
-            this.findNumberPossibleRoutes(fromTown,toTown,maxStops,sameRoute);
+        getDeliveryRoute(fromTown,toTown,maxStops){
+            this.findNumberPossibleRoutes(fromTown,toTown,maxStops,false);
             return this.cheapestDelivery;
         }
 
@@ -20,7 +20,7 @@ class PossibleRoutes{
             deliveryCost = deliveryCost +  currentCost
 
             if(currentTown == toTown){
-                this.possibleRoutes++;
+                this.possibleRoutes++
                 if(deliveryCost <= this.cheapestDelivery ){
                     this.cheapestDelivery = deliveryCost
                 }
@@ -59,7 +59,12 @@ class PossibleRoutes{
                 let currentTown = Object.keys(curr)[0];
                 let currentStops = 1;
                 let dC = curr[currentTown];
-                this.findRoutes(path,isVisitedNode,currentTown,toTown,maxStop,currentStops,dC,0);
+                try {
+                    this.findRoutes(path, isVisitedNode, currentTown, toTown, maxStop, currentStops, dC, 0);
+                }
+                catch (e) {
+                    
+                }
                 isVisitedNode[currentTown] = false;
             }
             return this.possibleRoutes;
