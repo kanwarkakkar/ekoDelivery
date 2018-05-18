@@ -67,7 +67,7 @@ describe('ekoDelivery', () => {
     });
 
     describe('/POST possibleRoutes', () => {
-        it('should return 6 as possible routes from E to D with no max stops limit', (done) => {
+        it('should return 9 as possible routes from E to D with no max stops limit', (done) => {
             let input = {
                 "fromTown": "E",
                 "toTown": "D"
@@ -78,7 +78,7 @@ describe('ekoDelivery', () => {
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('object');
-                    expect(res.body.possibleRoutes).to.be.equal(6)
+                    expect(res.body.possibleRoutes).to.be.equal(9)
                     done();
                 });
         });

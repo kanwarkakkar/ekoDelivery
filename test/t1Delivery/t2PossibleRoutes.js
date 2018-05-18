@@ -95,5 +95,21 @@ describe('Case 2 : Calculate number of possible delivery route from one Town to 
         expect(expectedRoutes).to.be.equal(actualRoutes);
     });
 
+    it('should return 29 as possible routes from E to E with max delivery cost 20',  () => {
+
+
+        const fromTown = 'E'
+        const endTown = 'E'
+        const maxStops = Number.MAX_SAFE_INTEGER
+        const expectedRoutes = 29;
+        const sameRouteTwice = true
+        const maxDeliveryCost = 20
+        let inputGraph = 'AB1, AC4, AD10, BE3, CD4, CF2, DE1, EB3, EA2, FD1'
+        let pR = new PossibleRoutes(inputGraph);
+
+        const actualRoutes = pR.findNumberPossibleRoutes(fromTown, endTown, maxStops, sameRouteTwice,maxDeliveryCost)
+        expect(expectedRoutes).to.be.equal(actualRoutes);
+    });
+
 });
 

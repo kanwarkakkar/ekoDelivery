@@ -35,13 +35,13 @@ describe('Case 3 : Cheapest Delivery route between two towns', () => {
         let inputGraph = 'AB1, AC4, AD10, BE3, CD4, CF2, DE1, EB3, EA2, FD1'
         const fromTown = 'E'
         const endTown = 'X'
-        const expectedCost = new Error('Too Much Recursion');
+        const expectedCost = 0;
         let cD = new EKonomicalDelivery(inputGraph);
 
         const actualCost = cD.getCheapestDeliveryRoute(fromTown, endTown)
 
 
-        expect.fail
+        expect(expectedCost).to.be.equal(actualCost);
     });
 });
 
