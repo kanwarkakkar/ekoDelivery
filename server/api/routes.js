@@ -4,6 +4,7 @@ import {PossibleRoutes,EKonomicalDelivery,DeliveryCost} from '../index'
 let router = express.Router();
 
 router.post('/eko/deliveryCost',(req,res,next)=>{
+   
     let inputGraph = req.body.inputGraph || 'AB1, AC4, AD10, BE3, CD4, CF2, DE1, EB3, EA2, FD1';
     let route = req.body.route;
     if (!route)
@@ -11,7 +12,7 @@ router.post('/eko/deliveryCost',(req,res,next)=>{
     else {
         let dC = new DeliveryCost(inputGraph);
         let result = dC.findCostOfDelivery(route);
-        res.status(200).send(result.toString());
+        res.status(200).send({cost:result});
     }
 })
 
@@ -27,7 +28,7 @@ router.post('/eko/eKonomicalDelivery',(req,res,next)=>{
         
         let cD = new EKonomicalDelivery(inputGraph);
         let result = cD.getCheapestDeliveryRoute(fromTown,toTown,maxStops,false);
-        res.status(200).send(result.toString());
+        res.status(200).send({cheapestDelivery:result});
     }
 })
 
@@ -43,7 +44,7 @@ router.post('/eko/possibleRoutes',(req,res,next)=>{
         
         let pR = new PossibleRoutes(inputGraph);
         let result = pR.findNumberPossibleRoutes(fromTown,toTown,maxStops,false);
-        res.status(200).send(result.toString());
+        res.status(200).send({possibleRoutes:result});
     }
 })
 
